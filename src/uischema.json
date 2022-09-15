@@ -3,53 +3,44 @@
   "elements": [
     {
       "type": "Control",
-      "label": "Completed",
-      "scope": "#/properties/done"
+      "label": "Username",
+      "scope": "#/properties/username/text"
     },
     {
       "type": "Control",
-      "scope": "#/properties/name"
-    },
-    {
-      "type": "HorizontalLayout",
-      "elements": [
-        {
-          "type": "Control",
-          "scope": "#/properties/due_date"
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/rating"
-        }
-      ]
-    },
-    {
-      "type": "HorizontalLayout",
-      "elements": [
-        {
-          "type": "Control",
-          "scope": "#/properties/recurrence"
-        },
-        {
-          "type": "Control",
-          "scope": "#/properties/recurrence_interval",
-          "rule": {
-            "effect": "HIDE",
-            "condition": {
-              "type": "LEAF",
-              "scope": "#/properties/recurrence",
-              "expectedValue": "Never"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "type": "Control",
-      "scope": "#/properties/description",
+      "label": "Password",
+      "scope": "#/properties/password/text",
       "options": {
-        "multi": true
+        "inputType": "password"
       }
+    },
+    {
+      "type": "Control",
+      "label": "Do you wear shoes?",
+      "scope": "#/properties/shoes/radio",
+      "options": {
+        "id": "shoes",
+        "items": [
+          {
+            "label": "Always",
+            "value": "always"
+          },
+          {
+            "label": "Sometimes",
+            "value": "sometimes"
+          },
+          {
+            "label": "Never",
+            "value": "never"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Control",
+      "label": "Tell us about your socks",
+      "scope": "#/properties/socks/textarea",
+      "hint": "Tell us about colour and brand of socks"
     }
   ]
 }

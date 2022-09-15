@@ -1,31 +1,18 @@
 {
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string",
-      "minLength": 1
-    },
-    "description": {
-      "title": "Long Description",
+    "username": {
       "type": "string"
     },
-    "done": {
-      "type": "boolean"
-    },
-    "due_date": {
+    "password": {
       "type": "string",
-      "format": "date"
+      "minLength": 5
     },
-    "rating": {
-      "type": "integer",
-      "maximum": 5
+    "shoes": {
+      "type": "string"
     },
-    "recurrence": {
-      "type": "string",
-      "enum": ["Never", "Daily", "Weekly", "Monthly"]
-    },
-    "recurrence_interval": {
-      "type": "integer"
+    "socks": {
+      "type": "string"
     }
   },
   "required": ["name", "due_date"]

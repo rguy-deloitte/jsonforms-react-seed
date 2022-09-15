@@ -1,9 +1,5 @@
 import { Fragment, useState, useMemo } from 'react';
 import { JsonForms } from '@jsonforms/react';
-import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import logo from './logo.svg';
 import './App.css';
 import schema from './schema.json';
 import uischema from './uischema.json';
@@ -11,52 +7,31 @@ import {
   materialCells,
   materialRenderers,
 } from '@jsonforms/material-renderers';
-import RatingControl from './RatingControl';
-import ratingControlTester from './ratingControlTester';
-import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles({
-  container: {
-    padding: '1em',
-    width: '100%',
-  },
-  title: {
-    textAlign: 'center',
-    padding: '0.25em',
-  },
-  dataContent: {
-    display: 'flex',
-    justifyContent: 'center',
-    borderRadius: '0.25em',
-    backgroundColor: '#cecece',
-    marginBottom: '1rem',
-  },
-  resetButton: {
-    margin: 'auto !important',
-    display: 'block !important',
-  },
-  demoform: {
-    margin: 'auto',
-    padding: '1rem',
-  },
-});
+import GdsRadioControl from './GdsComponents/radio/GdsRadioControl';
+import gdsRadioTester from './GdsComponents/radio/GdsRadioTester';
+
+import GdsTextInputControl from './GdsComponents/text/GdsTextInputControl';
+import gdsTextInputTester from './GdsComponents/text/GdsTextInputTester';
+
+import GdsTextareaControl from './GdsComponents/textarea/GdsTextareaControl';
+import gdsTextareaTester from './GdsComponents/textarea/GdsTextareaTester';
+
+import { Fieldset, Page, Footer, Main, TopNav } from 'govuk-react';
 
 const initialData = {
-  name: 'Send email to Adrian',
-  description: 'Confirm if you have passed the subject\nHereby ...',
-  done: true,
-  recurrence: 'Daily',
-  rating: 3,
+  username: 'NeilMc',
 };
 
 const renderers = [
   ...materialRenderers,
   //register custom renderers
-  { tester: ratingControlTester, renderer: RatingControl },
+  { tester: gdsRadioTester, renderer: GdsRadioControl },
+  { tester: gdsTextInputTester, renderer: GdsTextInputControl },
+  { tester: gdsTextareaTester, renderer: GdsTextareaControl },
 ];
 
 const App = () => {
-  const classes = useStyles();
   const [data, setData] = useState<any>(initialData);
   const stringifiedData = useMemo(() => JSON.stringify(data, null, 2), [data]);
 
@@ -66,41 +41,20 @@ const App = () => {
 
   return (
     <Fragment>
-      <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h1 className='App-title'>Welcome to JSON Forms with React</h1>
-          <p className='App-intro'>More Forms. Less Code.</p>
-        </header>
-      </div>
-
-      <Grid
-        container
-        justifyContent={'center'}
-        spacing={1}
-        className={classes.container}
+      <Page
+        header={
+          <TopNav>
+            <TopNav.NavLink href='/'>Homepage</TopNav.NavLink>
+            <TopNav.NavLink href='/form'>Form</TopNav.NavLink>
+          </TopNav>
+        }
+        footer={<Footer></Footer>}
       >
-        <Grid item sm={6}>
-          <Typography variant={'h4'} className={classes.title}>
-            Bound data
-          </Typography>
-          <div className={classes.dataContent}>
-            <pre id='boundData'>{stringifiedData}</pre>
-          </div>
-          <Button
-            className={classes.resetButton}
-            onClick={clearData}
-            color='primary'
-            variant='contained'
-          >
-            Clear data
-          </Button>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography variant={'h4'} className={classes.title}>
-            Rendered form
-          </Typography>
-          <div className={classes.demoform}>
+        <Main>
+          <Fieldset>
+            <Fieldset.Legend isPageHeading size='XLARGE'>
+              Form
+            </Fieldset.Legend>
             <JsonForms
               schema={schema}
               uischema={uischema}
@@ -109,9 +63,10 @@ const App = () => {
               cells={materialCells}
               onChange={({ errors, data }) => setData(data)}
             />
-          </div>
-        </Grid>
-      </Grid>
+          </Fieldset>
+          <pre id='boundData'>{stringifiedData}</pre>
+        </Main>
+      </Page>
     </Fragment>
   );
 };
