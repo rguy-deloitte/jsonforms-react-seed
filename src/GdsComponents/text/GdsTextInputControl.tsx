@@ -7,6 +7,7 @@ interface GdsTextInputControlProps {
   path: string;
   label: string;
   uischema: any;
+  errors: any;
 }
 
 const GdsTextInputControl = ({
@@ -15,12 +16,14 @@ const GdsTextInputControl = ({
   path,
   label,
   uischema,
+  errors,
 }: GdsTextInputControlProps) => (
   <GdsTextInput
     value={data}
     updateValue={(newValue: string) => handleChange(path, newValue)}
     label={label}
     uischema={uischema}
+    errors={errors}
   />
 );
 

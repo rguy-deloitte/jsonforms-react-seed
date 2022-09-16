@@ -7,6 +7,7 @@ interface GdsTextInputProps {
   updateValue: (newValue: string) => void;
   label: string;
   uischema: any;
+  errors: any;
 }
 
 export const GdsTextInput: React.FC<GdsTextInputProps> = ({
@@ -14,10 +15,13 @@ export const GdsTextInput: React.FC<GdsTextInputProps> = ({
   updateValue,
   label,
   uischema,
+  errors,
 }) => {
   const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateValue(e.target.value);
   };
+
+  console.log(errors);
 
   return (
     <div id='#/properties/gdsTextInput' className='gdsTextInput'>
@@ -33,6 +37,10 @@ export const GdsTextInput: React.FC<GdsTextInputProps> = ({
                 ? uischema.options.inputType
                 : 'text'
               : 'text',
+          }}
+          meta={{
+            error: errors,
+            touched: true,
           }}
         >
           {label}
