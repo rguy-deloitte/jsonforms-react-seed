@@ -16,31 +16,31 @@
     },
     {
       "type": "Control",
-      "label": "Do you wear shoes?",
-      "scope": "#/properties/shoes/radio",
+      "label": "User type",
+      "scope": "#/properties/usertype/radio",
       "options": {
         "id": "shoes",
         "items": [
           {
-            "label": "Always",
-            "value": "always"
+            "label": "Administrator",
+            "value": "admin"
           },
           {
-            "label": "Sometimes",
-            "value": "sometimes"
+            "label": "Read/write",
+            "value": "rw"
           },
           {
-            "label": "Never",
-            "value": "never"
+            "label": "Read only",
+            "value": "r"
           }
         ]
       }
     },
     {
       "type": "Control",
-      "label": "Tell us about your socks",
-      "scope": "#/properties/socks/textarea",
-      "hint": "Tell us about colour and brand of socks"
+      "label": "Comments",
+      "scope": "#/properties/comments/textarea",
+      "hint": "Add any additional information"
     }
   ]
 }

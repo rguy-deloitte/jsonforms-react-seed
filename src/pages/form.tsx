@@ -51,7 +51,7 @@ const Form = () => {
     <Fragment>
       <Fieldset>
         <Fieldset.Legend isPageHeading size='XLARGE'>
-          Form
+          User details
         </Fieldset.Legend>
         <JsonForms
           schema={schema}

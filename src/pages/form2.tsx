@@ -49,7 +49,7 @@ const Form2 = () => {
     <Fragment>
       <Fieldset>
         <Fieldset.Legend isPageHeading size='XLARGE'>
-          Address form
+          Address
         </Fieldset.Legend>
         <JsonForms
           schema={schema}

@@ -8,8 +8,8 @@ const Layout = () => {
         header={
           <TopNav>
             <TopNav.NavLink href='/'>Homepage</TopNav.NavLink>
-            <TopNav.NavLink href='/form'>Form</TopNav.NavLink>
-            <TopNav.NavLink href='/form-2'>Form 2</TopNav.NavLink>
+            <TopNav.NavLink href='/form'>User</TopNav.NavLink>
+            <TopNav.NavLink href='/form-2'>Address</TopNav.NavLink>
           </TopNav>
         }
         footer={<Footer></Footer>}
