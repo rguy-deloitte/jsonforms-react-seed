@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FormGroup, InputField } from 'govuk-react';
 
 interface GdsTextInputProps {
@@ -17,11 +17,13 @@ export const GdsTextInput: React.FC<GdsTextInputProps> = ({
   uischema,
   errors,
 }) => {
+  const [data, setData] = useState<any>({ touched: false });
   const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateValue(e.target.value);
   };
-
-  console.log(errors);
+  const inputTouch = () => {
+    setData({ touched: true });
+  };
 
   return (
     <div id='#/properties/gdsTextInput' className='gdsTextInput'>
@@ -32,6 +34,7 @@ export const GdsTextInput: React.FC<GdsTextInputProps> = ({
             placeholder: uischema.placeholder ? uischema.placeholder : '',
             value: value ? value : '',
             onChange: inputChange,
+            onBlur: inputTouch,
             type: uischema.options
               ? uischema.options.inputType
                 ? uischema.options.inputType
@@ -40,7 +43,7 @@ export const GdsTextInput: React.FC<GdsTextInputProps> = ({
           }}
           meta={{
             error: errors,
-            touched: true,
+            touched: data.touched,
           }}
         >
           {label}

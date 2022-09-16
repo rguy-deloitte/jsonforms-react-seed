@@ -1,0 +1,25 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Control",
+      "label": "Address 1",
+      "scope": "#/properties/address1/text"
+    },
+    {
+      "type": "Control",
+      "label": "Address 2",
+      "scope": "#/properties/address2/text"
+    },
+    {
+      "type": "Control",
+      "label": "City",
+      "scope": "#/properties/city/text"
+    },
+    {
+      "type": "Control",
+      "label": "Postcode",
+      "scope": "#/properties/postcode/text"
+    }
+  ]
+}

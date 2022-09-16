@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "address1": {
+      "type": "string",
+      "minLength": 1
+    },
+    "address2": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string",
+      "minLength": 1
+    },
+    "postcode": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": ["address1", "city", "postcode"]
+}
